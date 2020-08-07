@@ -55,15 +55,19 @@ class BinarySearchTree {
         this.insert(subRoot.rightChild(), newNode);
     }
 
-    private void preOrderTraversal(Node subRoot) {
-        if (subRoot != null) {
-            System.out.println(subRoot);
-            preOrderTraversal(subRoot.leftChild());
-            preOrderTraversal(subRoot.rightChild());
-        }
-    }
+    // private void preOrderTraversal(Node subRoot) {
+    //     if (subRoot != null) {
+    //         System.out.println(subRoot);
+    //         preOrderTraversal(subRoot.leftChild());
+    //         preOrderTraversal(subRoot.rightChild());
+    //     }
+    // }
 
-    void print() {
-        this.preOrderTraversal(root);
+    // void print() {
+    //     this.preOrderTraversal(root);
+    // }
+
+    Node tree() {
+        return this.root;
     }
 }

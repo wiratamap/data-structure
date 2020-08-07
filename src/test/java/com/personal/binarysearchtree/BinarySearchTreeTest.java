@@ -7,17 +7,40 @@ import org.junit.jupiter.api.Test;
 class BinarySearchTreeTest {
 
     @Test
-    void insert_shouldTraverseInCorrectOrder() {
+    void insert_shouldPlacedInRoot_whenTreeIsNotCreatedYet() {
+        Node expectedRoot = new Node(100);
         BinarySearchTree binarySearchTree = new BinarySearchTree();
 
-        binarySearchTree.insert(89);
-        binarySearchTree.insert(60);
-        binarySearchTree.insert(57);
-        binarySearchTree.insert(63);
-        binarySearchTree.insert(91);
         binarySearchTree.insert(100);
-        binarySearchTree.insert(10);
-        binarySearchTree.print();
+        Node createdNode = binarySearchTree.tree();
+
+        assertEquals(expectedRoot, createdNode);
+    }
+
+    @Test
+    void insert_shouldPlacedInLeftChild_whenValueIsLessThanSubRoot() {
+        Node expectedRoot = new Node(80);
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+
+        binarySearchTree.insert(100);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(80);
+        Node createdNode = binarySearchTree.tree().leftChild().leftChild();
+
+        assertEquals(expectedRoot, createdNode);
+    }
+
+    @Test
+    void insert_shouldPlacedInRightChild_whenValueIsGreaterThanSubRoot() {
+        Node expectedRoot = new Node(120);
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+
+        binarySearchTree.insert(100);
+        binarySearchTree.insert(110);
+        binarySearchTree.insert(120);
+        Node createdNode = binarySearchTree.tree().rightChild().rightChild();
+
+        assertEquals(expectedRoot, createdNode);
     }
 
     @Test

@@ -26,20 +26,6 @@ class Node {
         return false;
     }
 
-    boolean hasLeftChild() {
-        if (this.left != null) {
-            return true;
-        }
-        return false;
-    }
-
-    boolean hasRightChild() {
-        if (this.right != null) {
-            return true;
-        }
-        return false;
-    }
-
     void createLeftChild(Node newNode) {
         this.left = newNode;
     }
@@ -54,6 +40,20 @@ class Node {
 
     Node rightChild() {
         return this.right;
+    }
+
+    boolean hasLeftChild() {
+        if (this.left != null) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean hasRightChild() {
+        if (this.right != null) {
+            return true;
+        }
+        return false;
     }
 
     @Override

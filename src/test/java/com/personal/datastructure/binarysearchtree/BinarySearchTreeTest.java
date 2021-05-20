@@ -1,4 +1,4 @@
-package com.personal.binarysearchtree;
+package com.personal.datastructure.binarysearchtree;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

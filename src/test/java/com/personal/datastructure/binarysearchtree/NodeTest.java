@@ -1,8 +1,10 @@
-package com.personal.binarysearchtree;
+package com.personal.datastructure.binarysearchtree;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.personal.datastructure.binarysearchtree.Node;
 
 import org.junit.jupiter.api.Test;
 

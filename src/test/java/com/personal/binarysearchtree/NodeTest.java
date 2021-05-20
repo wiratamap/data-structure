@@ -7,23 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class NodeTest {
-
-    @Test
-    void isLessThan_shouldReturnTrue_whenOtherNodeHasGreaterValue() {
-        Node node = new Node(10);
-        Node otherNode = new Node(100);
-
-        assertTrue(node.isLessThan(otherNode));
-    }
-
-    @Test
-    void isLessThan_shouldReturnFalse_whenOtherNodeHasLesserValue() {
-        Node node = new Node(100);
-        Node otherNode = new Node(50);
-
-        assertFalse(node.isLessThan(otherNode));
-    }
-
     @Test
     void isGreaterThan_shouldReturnTrue_whenOtherNodeHasLesserValue() {
         Node node = new Node(100);

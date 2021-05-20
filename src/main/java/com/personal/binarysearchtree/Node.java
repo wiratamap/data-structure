@@ -1,8 +1,5 @@
 package com.personal.binarysearchtree;
 
-/**
- * Node
- */
 class Node {
     private int value;
     private Node left;
@@ -12,18 +9,8 @@ class Node {
         this.value = value;
     }
 
-    boolean isLessThan(Node otherNode) {
-        if (this.value < otherNode.value) {
-            return true;
-        }
-        return false;
-    }
-
     boolean isGreaterThan(Node otherNode) {
-        if (this.value > otherNode.value) {
-            return true;
-        }
-        return false;
+        return this.value > otherNode.value;
     }
 
     void createLeftChild(Node newNode) {
@@ -43,17 +30,11 @@ class Node {
     }
 
     boolean hasLeftChild() {
-        if (this.left != null) {
-            return true;
-        }
-        return false;
+        return this.left != null;
     }
 
     boolean hasRightChild() {
-        if (this.right != null) {
-            return true;
-        }
-        return false;
+        return this.right != null;
     }
 
     @Override
@@ -78,8 +59,6 @@ class Node {
         if (getClass() != obj.getClass())
             return false;
         Node other = (Node) obj;
-        if (value != other.value)
-            return false;
-        return true;
+        return value == other.value;
     }
 }

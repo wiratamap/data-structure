@@ -1,7 +1,5 @@
 package com.personal.algorithm.divideandconquer;
 
-import com.personal.algorithm.divideandconquer.Power;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

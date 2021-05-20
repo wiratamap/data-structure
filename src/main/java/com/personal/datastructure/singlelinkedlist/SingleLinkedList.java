@@ -23,6 +23,23 @@ class SingleLinkedList {
         node.insertNext(newNode);
     }
 
+    void append(int value) {
+        if (this.head == null) {
+            this.pushFront(value);
+            return;
+        }
+        this.appendNextNode(this.head, value);
+    }
+
+    private void appendNextNode(Node nextNode, int value) {
+        Node newNode = new Node(value);
+        if (nextNode.next() == null) {
+            nextNode.insertNext(newNode);
+            return;
+        }
+        this.appendNextNode(nextNode.next(), value);
+    }
+
     Node head() {
         return this.head;
     }

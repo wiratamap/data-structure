@@ -39,4 +39,27 @@ class SingleLinkedListTest {
 
         Assertions.assertEquals(expectedNode, actualNode);
     }
+
+    @Test
+    void append_shouldInsertNewNodeAfterLastNode_whenAppendIsInvoked() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.pushFront(20);
+        singleLinkedList.pushFront(10);
+        Node expectedNode = new Node(30);
+
+        singleLinkedList.append(30);
+        Node actualNode = singleLinkedList.head().next().next();
+
+        Assertions.assertEquals(expectedNode, actualNode);
+    }
+
+    @Test
+    void append_shouldInsertNewNodeAtFirstElement_whenAppendIsInvoked() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        Node expectedNode = new Node(10);
+
+        singleLinkedList.append(10);
+
+        Assertions.assertEquals(expectedNode, singleLinkedList.head());
+    }
 }

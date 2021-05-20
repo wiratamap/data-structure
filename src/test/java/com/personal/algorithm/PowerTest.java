@@ -33,4 +33,14 @@ class PowerTest {
 
         Assertions.assertEquals(expectedResult, result);
     }
+
+    @Test
+    void process_shouldReturn3125_when5PowerWith5() {
+        Power power = new Power();
+        int expectedResult = 3125;
+
+        int result = power.process(5, 5);
+
+        Assertions.assertEquals(expectedResult, result);
+    }
 }

@@ -8,10 +8,9 @@ class Power {
         if (power == 1) {
             return base;
         }
-        int result = base;
-        for (int i = 0; i < power - 1; i++) {
-            result *= base;
+        if (power % 2 == 0) {
+            return process(base, power / 2) * process(base, power / 2);
         }
-        return result;
+        return base * process(base, power / 2) * process(base, power / 2);
     }
 }

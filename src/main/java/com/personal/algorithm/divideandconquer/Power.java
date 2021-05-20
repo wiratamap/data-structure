@@ -1,4 +1,4 @@
-package com.personal.algorithm;
+package com.personal.algorithm.divideandconquer;
 
 class Power {
     int process(int base, int power) {

@@ -11,9 +11,16 @@ class SingleLinkedList {
         Node newNode = new Node(value);
         if (this.head == null) {
             this.head = newNode;
+            return;
         }
         newNode.insertNext(this.head);
         this.head = newNode;
+    }
+
+    void pushAfter(Node node, int value) {
+        Node newNode = new Node(value);
+        newNode.insertNext(node.next());
+        node.insertNext(newNode);
     }
 
     Node head() {

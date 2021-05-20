@@ -24,4 +24,19 @@ class SingleLinkedListTest {
 
         Assertions.assertEquals(expectedNode, singleLinkedList.head());
     }
+
+    @Test
+    void pushAfter_shouldInsertNewNodeAfterGivenNode_whenPushAfterIsInvoked() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.pushFront(30);
+        singleLinkedList.pushFront(20);
+        singleLinkedList.pushFront(10);
+        Node givenNode = singleLinkedList.head().next();
+        Node expectedNode = new Node(25);
+
+        singleLinkedList.pushAfter(givenNode, 25);
+        Node actualNode = singleLinkedList.head().next().next();
+
+        Assertions.assertEquals(expectedNode, actualNode);
+    }
 }

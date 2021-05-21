@@ -7,6 +7,10 @@ package com.personal.datastructure.singlelinkedlist;
 class SingleLinkedList {
     private Node head;
 
+    Node head() {
+        return this.head;
+    }
+
     void pushFront(int value) {
         Node newNode = new Node(value);
         if (this.head == null) {
@@ -40,7 +44,24 @@ class SingleLinkedList {
         this.appendNextNode(nextNode.next(), value);
     }
 
-    Node head() {
-        return this.head;
+    void delete(int value) {
+        Node deletedCandidate = new Node(value);
+        if (this.head().equals(deletedCandidate)) {
+            if (this.head.next() != null) {
+                this. head = this.head.next();
+                return;
+            }
+            this.head = null;
+            return;
+        }
+        this.delete(deletedCandidate, this.head);
+    }
+
+    private void delete(Node deletedCandidate, Node currentNode) {
+        if (currentNode.next().equals(deletedCandidate)) {
+            currentNode.insertNext(currentNode.next().next());
+            return;
+        }
+        this.delete(deletedCandidate, currentNode.next());
     }
 }

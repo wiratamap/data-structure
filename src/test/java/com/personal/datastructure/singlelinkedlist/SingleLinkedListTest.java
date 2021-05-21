@@ -62,4 +62,41 @@ class SingleLinkedListTest {
 
         Assertions.assertEquals(expectedNode, singleLinkedList.head());
     }
+
+    @Test
+    void delete_shouldDelete10FromHead_when10IsHead() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.pushFront(10);
+
+        singleLinkedList.delete(10);
+
+        Assertions.assertNull(singleLinkedList.head());
+    }
+
+    @Test
+    void delete_shouldDelete20FromLinkedList_when20IsExist() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.pushFront(30);
+        singleLinkedList.pushFront(20);
+        singleLinkedList.pushFront(10);
+        Node expectedNode = new Node(30);
+
+        singleLinkedList.delete(20);
+        Node actualNode = singleLinkedList.head().next();
+
+        Assertions.assertEquals(expectedNode, actualNode);
+    }
+
+    @Test
+    void delete_shouldDelete10FromHeadAndMoveNextAsAHead_whenDelete10AsAHead() {
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.pushFront(30);
+        singleLinkedList.pushFront(20);
+        singleLinkedList.pushFront(10);
+        Node expectedNode = new Node(20);
+
+        singleLinkedList.delete(10);
+
+        Assertions.assertEquals(expectedNode, singleLinkedList.head());
+    }
 }

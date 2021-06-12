@@ -37,6 +37,10 @@ class Node {
         return this.right != null;
     }
 
+    void replaceValueWith(Node anotherNode) {
+        this.value = anotherNode.value;
+    }
+
     @Override
     public String toString() {
         return "Node [value=" + value + "]";

@@ -1,7 +1,6 @@
 package com.personal.datastructure.binarysearchtree;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class BinarySearchTreeTest {
@@ -14,7 +13,7 @@ class BinarySearchTreeTest {
         binarySearchTree.insert(100);
         Node createdNode = binarySearchTree.tree();
 
-        assertEquals(expectedRoot, createdNode);
+        Assertions.assertEquals(expectedRoot, createdNode);
     }
 
     @Test
@@ -27,7 +26,7 @@ class BinarySearchTreeTest {
         binarySearchTree.insert(80);
         Node createdNode = binarySearchTree.tree().leftChild().leftChild();
 
-        assertEquals(expectedRoot, createdNode);
+        Assertions.assertEquals(expectedRoot, createdNode);
     }
 
     @Test
@@ -40,7 +39,7 @@ class BinarySearchTreeTest {
         binarySearchTree.insert(120);
         Node createdNode = binarySearchTree.tree().rightChild().rightChild();
 
-        assertEquals(expectedRoot, createdNode);
+        Assertions.assertEquals(expectedRoot, createdNode);
     }
 
     @Test
@@ -50,7 +49,7 @@ class BinarySearchTreeTest {
 
         Node result = binarySearchTree.find(10);
 
-        assertEquals(expectedNode, result);
+        Assertions.assertEquals(expectedNode, result);
     }
 
     @Test
@@ -61,7 +60,7 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(10);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
     }
 
     @Test
@@ -74,7 +73,7 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(8);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
     }
 
     @Test
@@ -87,7 +86,7 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(11);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
     }
 
     @Test
@@ -99,7 +98,7 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(8);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
     }
 
     @Test
@@ -111,7 +110,7 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(12);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
     }
 
     @Test
@@ -124,6 +123,48 @@ class BinarySearchTreeTest {
 
         Node actualSearchedResult = binarySearchTree.find(10);
 
-        assertEquals(expectedSearchedResult, actualSearchedResult);
+        Assertions.assertEquals(expectedSearchedResult, actualSearchedResult);
+    }
+
+    @Test
+    void delete_shouldSetRootToNull_whenDeletedCandidateIsRootItself() {
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.insert(50);
+
+        binarySearchTree.delete(50);
+        Node notExistingNode = binarySearchTree.find(50);
+
+        Assertions.assertNull(notExistingNode);
+    }
+
+    @Test
+    void delete_shouldSetNodeToBeDeletedToNull_whenDeletedCandidateIsLeaf() {
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.insert(100);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(110);
+
+        binarySearchTree.delete(110);
+        Node notExistingNode = binarySearchTree.find(110);
+
+        Assertions.assertNull(notExistingNode);
+    }
+
+    @Test
+    void delete_shouldSetNodeToBeDeletedToNullAndSetRootToNewNode_whenDeletedCandidateHasTwoChildrenAndDeletedCandidateIsRoot() {
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.insert(50);
+        binarySearchTree.insert(40);
+        binarySearchTree.insert(70);
+        binarySearchTree.insert(60);
+        binarySearchTree.insert(80);
+        Node successorNode = new Node(60);
+
+        binarySearchTree.delete(50);
+        Node notExistingNode = binarySearchTree.find(50);
+        Node updatedRoot = binarySearchTree.tree();
+
+        Assertions.assertNull(notExistingNode);
+        Assertions.assertEquals(successorNode, updatedRoot);
     }
 }

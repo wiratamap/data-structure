@@ -7,14 +7,31 @@ class BinarySearchTree {
         return this.root;
     }
 
-    void insert(int value) {
-        Node newNode = new Node(value);
-        if (root == null) {
-            root = newNode;
+    private void insert(Node subRoot, Node newNode) {
+        if (subRoot.isGreaterThan(newNode)) {
+            if (!subRoot.hasLeftChild()) {
+                subRoot.createLeftChild(newNode);
+                return;
+            }
+            this.insert(subRoot.leftChild(), newNode);
             return;
         }
 
-        this.insert(root, newNode);
+        if (!subRoot.hasRightChild()) {
+            subRoot.createRightChild(newNode);
+            return;
+        }
+        this.insert(subRoot.rightChild(), newNode);
+    }
+
+    void insert(int value) {
+        Node newNode = new Node(value);
+        if (this.root == null) {
+            this.root = newNode;
+            return;
+        }
+
+        this.insert(this.root, newNode);
     }
 
     private Node find(Node subRoot, Node searchedNode) {
@@ -42,23 +59,6 @@ class BinarySearchTree {
         return this.find(root, searchedNode);
     }
 
-    void insert(Node subRoot, Node newNode) {
-        if (subRoot.isGreaterThan(newNode)) {
-            if (!subRoot.hasLeftChild()) {
-                subRoot.createLeftChild(newNode);
-                return;
-            }
-            this.insert(subRoot.leftChild(), newNode);
-            return;
-        }
-
-        if (!subRoot.hasRightChild()) {
-            subRoot.createRightChild(newNode);
-            return;
-        }
-        this.insert(subRoot.rightChild(), newNode);
-    }
-
     private Node findSmallestFrom(Node root) {
         Node successor = root;
         while (root.hasLeftChild()) {
@@ -67,7 +67,6 @@ class BinarySearchTree {
         }
         return successor;
     }
-
 
     private Node delete(Node root, Node deletedCandidate) {
         if (root.equals(deletedCandidate)) {

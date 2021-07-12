@@ -93,4 +93,19 @@ class BinarySearchTree {
         Node deletedCandidate = new Node(value);
         this.root = this.delete(this.root, deletedCandidate);
     }
+
+    private Node invert(Node root) {
+        if (null == root) {
+            return null;
+        }
+        Node leftNode = this.invert(root.leftChild());
+        Node rightNode = this.invert(root.rightChild());
+        root.createLeftChild(rightNode);
+        root.createRightChild(leftNode);
+        return root;
+    }
+
+    void invert() {
+        this.root = this.invert(this.root);
+    }
 }

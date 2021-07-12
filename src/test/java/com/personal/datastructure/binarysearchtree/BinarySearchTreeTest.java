@@ -167,4 +167,21 @@ class BinarySearchTreeTest {
         Assertions.assertNull(notExistingNode);
         Assertions.assertEquals(successorNode, updatedRoot);
     }
+
+    @Test
+    void insert_shouldInvertRightToLeft_whenInvoked() {
+        Node expectedLeftChild = new Node(110);
+        Node expectedRightChild = new Node(90);
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.insert(100);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(110);
+
+        binarySearchTree.invert();
+        Node actualLeftChild = binarySearchTree.tree().leftChild();
+        Node actualRightChild = binarySearchTree.tree().rightChild();
+
+        Assertions.assertEquals(expectedLeftChild, actualLeftChild);
+        Assertions.assertEquals(expectedRightChild, actualRightChild);
+    }
 }

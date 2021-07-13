@@ -1,5 +1,8 @@
 package com.personal.datastructure.binarysearchtree;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -183,5 +186,23 @@ class BinarySearchTreeTest {
 
         Assertions.assertEquals(expectedLeftChild, actualLeftChild);
         Assertions.assertEquals(expectedRightChild, actualRightChild);
+    }
+
+    @Test
+    void inOrderTraversal_shouldReturnAllNodesInCorrectManner() {
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.insert(100);
+        binarySearchTree.insert(90);
+        binarySearchTree.insert(110);
+        binarySearchTree.insert(120);
+        Node firstNode = new Node(90);
+        Node secondNode = new Node(100);
+        Node thirdNode = new Node(110);
+        Node fourthNode = new Node(120);
+        List<Node> expectedNodes = Arrays.asList(firstNode, secondNode, thirdNode, fourthNode);
+
+        List<Node> actualNodes = binarySearchTree.inOrderTraversal();
+
+        Assertions.assertEquals(expectedNodes, actualNodes);
     }
 }

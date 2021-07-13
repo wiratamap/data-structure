@@ -1,5 +1,9 @@
 package com.personal.datastructure.binarysearchtree;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 class BinarySearchTree {
     private Node root;
 
@@ -107,5 +111,20 @@ class BinarySearchTree {
 
     void invert() {
         this.root = this.invert(this.root);
+    }
+
+    private List<Node> inOrderTraversal(Node root) {
+        if (null == root) {
+            return Collections.emptyList();
+        }
+        List<Node> allNodes = new ArrayList<>();
+        allNodes.addAll(this.inOrderTraversal(root.leftChild()));
+        allNodes.add(root);
+        allNodes.addAll(this.inOrderTraversal(root.rightChild()));
+        return allNodes;
+    }
+
+    List<Node> inOrderTraversal() {
+        return this.inOrderTraversal(this.root);
     }
 }
